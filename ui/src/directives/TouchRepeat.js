@@ -23,8 +23,16 @@ const
 function shouldEnd (evt, origin) {
   const { top, left } = position(evt)
 
-  return Math.abs(left - origin.left) >= 7
-    || Math.abs(top - origin.top) >= 7
+  // MG Lower sensitivity
+  // return Math.abs(left - origin.left) >= 7
+  //   || Math.abs(top - origin.top) >= 7
+
+    if(Math.abs(left - origin.left) >= 50
+    || Math.abs(top - origin.top) >= 50){
+      console.error(`MG: shouldEnd`)
+      return true;
+    }
+    return false;
 }
 
 export default createDirective(__QUASAR_SSR_SERVER__
